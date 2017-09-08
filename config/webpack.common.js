@@ -1,44 +1,67 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const helpers = require('./helpers');
 
 module.exports = {
-    entry: 'index.js',
+
     context: helpers.root('src'),
-    resolve: {
-        extensions: ['.js', '.jsx']
+
+    entry: './index',
+
+    output: {
+        path: helpers.root( "built"),
+        filename: 'bundle.js'
     },
 
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+    },
+
+
     module: {
-        loaders: [
-            {
+        rules: [{
+                test: /\.tsx?$/,
+                loaders: [
+                    "react-hot-loader/webpack",
+                    "awesome-typescript-loader"
+                ],
+
+            }, {
                 test: /\.(js|jsx)$/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.html$/,
-                loader: 'html'
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file?name=assets/[name].[hash].[ext]'
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader'
+                ],
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
-            },
-            {
-                test: /\.css$/,
-                loader: 'raw'
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            camelCase: true,
+                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                        },
+                    }, {
+                        loader: 'typed-css-modules-loader',
+                        options: {
+                            camelCase: true,
+                            outDir: './built/css-modules'
+                        },
+                    }
+                ]
             }
         ]
     },
 
-
     plugins: [
+        new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin({
-            template: 'index.html'
-        })
+            hash: true,
+            template: './index.html'
+        }),
     ]
 };
