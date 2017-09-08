@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { AppContainer } from 'react-hot-loader';
-import ReactDom from 'react-dom';
+import * as ReactDom from 'react-dom';
 
 import App from './components/App';
 
