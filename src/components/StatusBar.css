@@ -1,0 +1,30 @@
+.statusBarWrapper {
+    background: #ccc;
+    padding: 10px
+}
+.statusBar {
+    display: flex;
+    flex-direction: row;    
+    margin: 0 auto;
+    max-width: 1000px;
+}
+.statusOptions {
+    margin: 0;
+    padding: 0;
+}
+
+.statusOptions li {
+    margin-right: 10px;
+    list-style-type: none;
+    display: inline-block
+}
+
+
+.statusOptions li a {
+    margin-right: 10px;
+    list-style-type: none;
+}
+
+.status {
+    
+}

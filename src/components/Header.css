@@ -1,0 +1,26 @@
+.header {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.header nav {
+    margin: 10px 0;
+}
+.header h1 {
+    font-size: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0px 3px 2px #000;
+}
+.header nav li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.headerWrapper{
+    min-height: 220px;
+    background: url('/public/img/headerBg.jpg');
+    padding: 10px;
+    background-size: cover;
+}

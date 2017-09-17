@@ -1,9 +1,13 @@
 import * as React from 'react';
-
+import {Header} from './Header';
+import {StatusBar} from './StatusBar';
 
 export default class App extends React.Component {
 
     render() {
-        return (<h1>React Mentoring programm App</h1>)
+        return (<div>
+            <Header/>
+            <StatusBar/>
+        </div>)
     }
 }
