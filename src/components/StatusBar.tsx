@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as s from './StatusBar.css';
+import * as s from './StatusBar.scss';
 
-import * as buttons from '../css/buttons.css';
-import * as utils from '../css/utilities.css';
+import * as buttons from '../scss/buttons.scss';
+import * as utils from '../scss/utilities.scss';
 
 export class StatusBar extends React.Component<any, any> {
     

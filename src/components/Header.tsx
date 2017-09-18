@@ -1,11 +1,27 @@
 import * as React from 'react';
-import * as s from './Header.css';
+import * as s from './Header.scss';
 
-import * as buttons from '../css/buttons.css';
-import * as utils from '../css/utilities.css';
+import * as buttons from '../scss/buttons.scss';
+import * as utils from '../scss/utilities.scss';
 
 import {SearchBar} from './SearchBar';
 import {FilmDescription} from './FilmDescription';
+
+
+const filmData = {
+  unit: 1463,
+  show_id: 520179,
+  show_title: "Four Rooms",
+  release_year: "1995",
+  rating: "3.6",
+  category: "Comedies",
+  show_cast: "Tim Roth, Antonio Banderas, Jennifer Beals, Bruce Willis, Paul Calderon, Madonna, Marisa Tomei, Quentin Tarantino, Ione Skye, Lili Taylor",
+  director: "Quentin Tarantino, Robert Rodriguez, Allison Anders, Alexandre Rockwell",
+  summary: "One mad New Year's Eve, an overwhelmed bellboy copes with witches and diabolical children, gets caught in the middle of a sour relationship and settles a bloody bet for members of a superstar's entourage.",
+  poster: "http://netflixroulette.net/api/posters/520179.jpg",
+  mediatype: 0,
+  runtime: "98 min"
+  };
 
 export class Header extends React.Component<any, any> {
     
@@ -34,7 +50,7 @@ export class Header extends React.Component<any, any> {
                 </nav>
                 {!this.state.isSearchBar && !this.state.isMovie ? <h1 className={s.siteHeader}>Find Your movie</h1> : null }
                 {this.state.isSearchBar ? <SearchBar/> : null }
-                {this.state.isMovie ? <FilmDescription/> : null }
+                {this.state.isMovie ? <FilmDescription item={filmData}/> : null }
             </header>
         </div>);
     }

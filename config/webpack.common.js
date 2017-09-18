@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const helpers = require('./helpers');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -29,33 +30,39 @@ module.exports = {
 
             },
             {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            camelCase: true,
-                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                        },
-                    }, {
+              test: /\.s?css$/,
+              use: ExtractTextPlugin.extract({
+                  fallback: 'style-loader',
+                  use: [
+                      {
+                          loader: 'css-loader',
+                          options: {
+                              modules: true,
+                              camelCase: true,
+                              importLoaders: 1,
+                              localIdentName: '[name]__[local]___[hash:base64:5]'
+                          }
+                      },
+                      {
                         loader: 'typed-css-modules-loader',
                         options: {
                             camelCase: true,
                             outDir: './built/css-modules'
-                        },
-                    }
-                ]
-            }
+                        }
+                      },
+                      'sass-loader'
+                  ]
+              })
+          },
         ]
     },
 
     plugins: [
         new webpack.NamedModulesPlugin(),
+        new ExtractTextPlugin({ filename: '[name].css' }),
         new HtmlWebpackPlugin({
             hash: true,
             template: './index.html'
-        }),
+        })
     ]
 };

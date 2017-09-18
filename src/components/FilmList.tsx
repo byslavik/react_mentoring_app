@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {FilmCard} from './FilmCard';
 import {NoItems} from './NoItems';
-import * as s from './FilmList.css';
+import * as s from './FilmList.scss';
 import {testData} from './testdata';
 
 export  class FilmList extends React.Component<any> {

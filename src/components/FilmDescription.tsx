@@ -1,24 +1,16 @@
 import * as React from 'react';
-import * as s from './FilmDescripiton.css';
+import * as s from './FilmDescripiton.scss';
 
-const filmData = {
-  unit: 1463,
-  show_id: 520179,
-  show_title: "Four Rooms",
-  release_year: "1995",
-  rating: "3.6",
-  category: "Comedies",
-  show_cast: "Tim Roth, Antonio Banderas, Jennifer Beals, Bruce Willis, Paul Calderon, Madonna, Marisa Tomei, Quentin Tarantino, Ione Skye, Lili Taylor",
-  director: "Quentin Tarantino, Robert Rodriguez, Allison Anders, Alexandre Rockwell",
-  summary: "One mad New Year's Eve, an overwhelmed bellboy copes with witches and diabolical children, gets caught in the middle of a sour relationship and settles a bloody bet for members of a superstar's entourage.",
-  poster: "http://netflixroulette.net/api/posters/520179.jpg",
-  mediatype: 0,
-  runtime: "98 min"
-  };
+import {Film, FilmProps, FilmState} from '../models/film.model';
 
-export class FilmDescription extends React.Component {
+export class FilmDescription extends React.Component<FilmProps, FilmState> {
+    constructor () {
+      super();
+    }
 
-    render() {
+    public render() {
+      const filmData = this.props.item;
+      
         return (<article className={s.filmContainer}>
           <div className={s.imgWrap}>
             <img src={filmData.poster} alt={filmData.show_title}/>
