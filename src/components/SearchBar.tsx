@@ -19,7 +19,7 @@ export class SearchBar extends React.Component<any, any> {
 
                     <ul>
                         <li>
-                            <a className={buttons.buttonWhite + ' ' + buttons.small} href="javascript:void(0)">Title</a>
+                            <a className={buttons.buttonWhite + ' ' + buttons.small + ' ' + buttons.buttonWhiteActive} href="javascript:void(0)">Title</a>
                         </li>
                         <li>
                             <a className={buttons.buttonWhite + ' ' + buttons.small} href="javascript:void(0)">Director</a>

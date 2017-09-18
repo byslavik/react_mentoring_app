@@ -4,11 +4,12 @@
 }
 .statusBar {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row; 
+    justify-content: space-between;
     margin: 0 auto;
     max-width: 1000px;
 }
-.statusOptions {
+.statusOptions ul {
     margin: 0;
     padding: 0;
 }
@@ -23,8 +24,16 @@
 .statusOptions li a {
     margin-right: 10px;
     list-style-type: none;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background .5s, color .5s;
+}
+.statusOptions li a:hover {
+  background: #333;
+  color: #fff;
 }
 
 .status {
-    
+    font-weight: bold;
 }

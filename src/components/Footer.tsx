@@ -1,9 +1,14 @@
 import * as React from 'react';
 
+import * as s from './Footer.css';
 
-export default class Footer extends React.Component {
+export class Footer extends React.Component {
 
     render() {
-        return (<h1>React Mentoring programm App</h1>)
+        return (<div className={s.footerWrapper}>
+          <footer className={s.footer}>
+
+          </footer>
+        </div>)
     }
 }

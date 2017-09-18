@@ -1,0 +1,9 @@
+.noItems {
+  font-size: 70px;
+  text-align: center;
+  color: #999;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 20px;
+}

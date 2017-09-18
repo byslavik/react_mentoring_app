@@ -10,7 +10,8 @@
     font-weight: bold;
     transition: color .5s, background .5s;
 }
-.buttonWhite:hover {
+.buttonWhite:hover,
+.buttonWhiteActive {
     background: #D31C1C;
     color: #fff;
     cursor: pointer;
@@ -30,7 +31,8 @@
     font-weight: bold;
     transition: color .5s, background .5s;
 }
-.search:hover {
+.search:hover,
+.searchActive {
     color: #D31C1C;
     background: #fff;
     cursor: pointer;
