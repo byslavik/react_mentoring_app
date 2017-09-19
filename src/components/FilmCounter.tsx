@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-import {FilmCounterProps, FilmCounterState} from '../models/film.model';
+interface FilmCounterState {
+}
+interface FilmCounterProps {
+  count: number;
+}
 
 export class FilmCounter extends React.Component<FilmCounterProps, FilmCounterState> {
 

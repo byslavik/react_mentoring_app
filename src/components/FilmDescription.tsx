@@ -1,7 +1,14 @@
 import * as React from 'react';
 import * as s from './FilmDescripiton.scss';
 
-import {Film, FilmProps, FilmState} from '../models/film.model';
+import {Film} from '../models/film.model';
+
+
+interface FilmState {
+}
+interface FilmProps {
+  item: Film;
+}
 
 export class FilmDescription extends React.Component<FilmProps, FilmState> {
     constructor () {

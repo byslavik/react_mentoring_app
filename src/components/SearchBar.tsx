@@ -4,12 +4,7 @@ import * as s from './SearchBar.scss';
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
 
-export class SearchBar extends React.Component<any, any> {
-    
-    constructor(props: any){
-        super(props);
-    }
-
+export class SearchBar extends React.Component {
     render() {
         return (<div className={s.searchBar}>
                 <h2>Find your movie</h2>
@@ -19,10 +14,10 @@ export class SearchBar extends React.Component<any, any> {
 
                     <ul>
                         <li>
-                            <a className={buttons.buttonWhite + ' ' + buttons.small + ' ' + buttons.buttonWhiteActive} href="javascript:void(0)">Title</a>
+                            <button className={buttons.buttonWhite + ' ' + buttons.small + ' ' + buttons.buttonWhiteActive} >Title</button>
                         </li>
                         <li>
-                            <a className={buttons.buttonWhite + ' ' + buttons.small} href="javascript:void(0)">Director</a>
+                            <button className={buttons.buttonWhite + ' ' + buttons.small} >Director</button>
                         </li>
                     </ul>
                 </div>

@@ -4,10 +4,16 @@ import {FilmCard} from './FilmCard';
 import {NoItems} from './NoItems';
 import * as s from './FilmList.scss';
 
-import {Film, FilmCardListProps, FilmCardListState} from '../models/film.model';
+import {Film} from '../models/film.model';
+
+export interface FilmCardListState {
+}
+export interface FilmCardListProps {
+  data: Film[];
+}
 
 export  class FilmList extends React.Component<FilmCardListProps, FilmCardListState> {
-  buildCards(data: Array<Film>) {
+  buildCards(data: Film[]) {
     return data.map((item: Film, index) => {
       return <FilmCard key={index} item={item} /> 
     })

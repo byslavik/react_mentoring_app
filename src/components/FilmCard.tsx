@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as s from './FilmCard.scss';
 
-import {Film, FilmCardProps, FilmCardState} from '../models/film.model';
+import {Film} from '../models/film.model';
+
+
+interface FilmCardState {
+}
+interface FilmCardProps {
+  item: Film;
+  key?: number;
+}
 
 export  class FilmCard extends React.Component<FilmCardProps, FilmCardState> {
   render () {

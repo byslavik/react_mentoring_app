@@ -30,31 +30,30 @@ module.exports = {
 
             },
             {
-              test: /\.s?css$/,
+              test: /\.scss$/,
+              exclude: /node_modules/,
               use: ExtractTextPlugin.extract({
                   fallback: 'style-loader',
+
+                  // Could also be write as follow:
+                  // use: 'css-loader?modules&importLoader=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader'
                   use: [
                       {
                           loader: 'css-loader',
-                          options: {
+                          query: {
                               modules: true,
-                              camelCase: true,
-                              importLoaders: 1,
+                              sourceMap: true,
+                              importLoaders: 2,
                               localIdentName: '[name]__[local]___[hash:base64:5]'
                           }
                       },
                       {
-                        loader: 'typed-css-modules-loader',
-                        options: {
-                            camelCase: true,
-                            outDir: './built/css-modules'
-                        }
+                        loader: 'typed-css-modules-loader'
                       },
-                      'sass-loader'
+                    'sass-loader'
                   ]
               })
-          },
-        ]
+        }]
     },
 
     plugins: [

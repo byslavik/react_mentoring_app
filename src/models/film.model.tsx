@@ -12,30 +12,3 @@ export interface Film {
   poster: string,
   runtime: string
 }
-export interface FilmState {
-}
-export interface FilmProps {
-  item: Film;
-}
-
-// Film cards
-export interface FilmCardState {
-}
-export interface FilmCardProps {
-  item: Film;
-  key?: number;
-}
-
-// Film cards list
-export interface FilmCardListState {
-}
-export interface FilmCardListProps {
-  data: Film[];
-}
-
-// Film counter
-export interface FilmCounterState {
-}
-export interface FilmCounterProps {
-  count: number;
-}
