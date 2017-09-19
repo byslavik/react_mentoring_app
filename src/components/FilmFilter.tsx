@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-export  class FilmFilter extends React.Component<any> {
+export  class FilmFilter extends React.Component {
 
     render() {
         return (<ul>

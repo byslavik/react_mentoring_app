@@ -1,39 +1,36 @@
 .statusBarWrapper {
-    background: #ccc;
-    padding: 10px
+  background: #ccc;
+  padding: 10px
 }
 .statusBar {
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 1000px;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1000px;
 }
 .statusOptions ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 .statusOptions li {
-    margin-right: 10px;
-    list-style-type: none;
-    display: inline-block
+  margin-right: 10px;
+  list-style-type: none;
+  display: inline-block
 }
-
-
 .statusOptions li a {
-    margin-right: 10px;
-    list-style-type: none;
-    color: #333;
-    text-decoration: none;
-    padding: 5px 10px;
-    transition: background .5s, color .5s;
+  margin-right: 10px;
+  list-style-type: none;
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background .5s, color .5s;
 }
-.statusOptions li a:hover {
+.statusOptions li a:hover,
+.statusOptions li a.active {
   background: #333;
   color: #fff;
 }
-
 .status {
-    font-weight: bold;
+  font-weight: bold;
 }

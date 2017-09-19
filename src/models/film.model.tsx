@@ -1,3 +1,5 @@
+// Separate page for film
+
 export interface Film {
   show_id: number,
   show_title: string,
@@ -11,10 +13,29 @@ export interface Film {
   runtime: string
 }
 export interface FilmState {
+}
+export interface FilmProps {
   item: Film;
 }
 
-export interface FilmProps {
+// Film cards
+export interface FilmCardState {
+}
+export interface FilmCardProps {
   item: Film;
   key?: number;
+}
+
+// Film cards list
+export interface FilmCardListState {
+}
+export interface FilmCardListProps {
+  data: Film[];
+}
+
+// Film counter
+export interface FilmCounterState {
+}
+export interface FilmCounterProps {
+  count: number;
 }

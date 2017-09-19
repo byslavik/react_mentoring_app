@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as s from './FilmCard.scss';
 
+import {Film, FilmCardProps, FilmCardState} from '../models/film.model';
 
-export  class FilmCard extends React.Component<any> {
+export  class FilmCard extends React.Component<FilmCardProps, FilmCardState> {
   render () {
-    const item = this.props.item;
+    const item:Film = this.props.item;
     return (
       <article className={s.filmCard}>
         <div className={s.imageWrap}>

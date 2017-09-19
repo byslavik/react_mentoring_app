@@ -3,11 +3,12 @@
     padding: 10px;
     color: #fff;
     margin-top: 10px;
-}
-.searchBar:after {
-    content: '';
-    display: block;
-    clear: both;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 }
 .searchBarOptions {
     margin-top: 10px;
@@ -24,7 +25,6 @@
     margin-right: 10px;
 
 }
-
 .searchBarOptions li a {
     padding: 10px;
 }

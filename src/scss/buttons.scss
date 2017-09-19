@@ -1,39 +1,42 @@
+$redButton: #D31C1C;
+$redButtonBg: #fff;
+
+%button {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: bold;
+  transition: color .5s, background .5s;
+}
 .buttonWhite {
-    display: inline-block;
-    color: #D31C1C;
-    border: 1px solid #D31C1C;
-    background: #fff;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 3px;
-    font-weight: bold;
-    transition: color .5s, background .5s;
+  @extend %button;
+
+  display: inline-block;
+  color: $redButton;
+  border: 1px solid $redButton;
+  background: $redButtonBg;
 }
 .buttonWhite:hover,
 .buttonWhiteActive {
-    background: #D31C1C;
-    color: #fff;
+    background: $redButton;
+    color: $redButtonBg;
     cursor: pointer;
 }
 .small {
     padding: 5px 10px !important;
 }
 .search {
-    display: inline-block;
-    background: #D31C1C;
-    border: 1px solid #D31C1C;
-    color: #fff;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 3px;
-    font-weight: bold;
-    transition: color .5s, background .5s;
+  @extend %button;
+
+  display: inline-block;
+  background: $redButton;
+  border: 1px solid #D31C1C;
+  color: $redButtonBg;
 }
 .search:hover,
 .searchActive {
-    color: #D31C1C;
-    background: #fff;
+    color: $redButton;
+    background: $redButtonBg;
     cursor: pointer;
 }

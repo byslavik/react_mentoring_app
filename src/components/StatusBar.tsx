@@ -4,9 +4,15 @@ import * as s from './StatusBar.scss';
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
 
-export class StatusBar extends React.Component<any, any> {
-    
-    constructor(props: any){
+interface StatusBarState {
+}
+interface StatusBarProps {
+  status: Object;
+  options: Object;
+}
+
+export class StatusBar extends React.Component<StatusBarProps, StatusBarState> {
+    constructor(props:StatusBarProps){
         super(props);
     }
 

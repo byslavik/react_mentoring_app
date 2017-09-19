@@ -23,9 +23,17 @@ const filmData = {
   runtime: "98 min"
   };
 
-export class Header extends React.Component<any, any> {
+  
+interface HeaderState {
+  isSearchBar: boolean;
+  isMovie: boolean;
+}
+interface HeaderProps {
+}
+
+export class Header extends React.Component<HeaderProps, HeaderState> {
     
-    constructor(props: any){
+    constructor(props: HeaderProps){
         super(props);
     }
 
@@ -35,7 +43,7 @@ export class Header extends React.Component<any, any> {
     }
 
     showSearch() {
-        this.setState({isSearchBar: !this.state.isSearchBar, isMovie: false});
+      this.setState({isSearchBar: !this.state.isSearchBar, isMovie: false});
     }    
     showMovie() {
       this.setState({isMovie: !this.state.isMovie, isSearchBar: false});

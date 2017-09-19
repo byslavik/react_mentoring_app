@@ -9,8 +9,8 @@ export class FilmDescription extends React.Component<FilmProps, FilmState> {
     }
 
     public render() {
-      const filmData = this.props.item;
-      
+      const filmData:Film = this.props.item;
+
         return (<article className={s.filmContainer}>
           <div className={s.imgWrap}>
             <img src={filmData.poster} alt={filmData.show_title}/>
