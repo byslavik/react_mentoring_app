@@ -28,7 +28,9 @@
 .searchBarOptions li a {
     padding: 10px;
 }
-.searchBar input[type="button"] {
+.searchBar input[type="button"],
+.searchBar button
+ {
     float: right;
     margin-top: 10px;
 }

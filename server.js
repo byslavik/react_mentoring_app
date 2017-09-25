@@ -23,7 +23,7 @@ router.use(function(req, res, next) {
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname+'/built/index.html'));
 });
-router.get('*', function(req, res) {
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname+'/built/index.html'));
 });
 

@@ -13,6 +13,15 @@
 .filmCard h1 {
   margin: 10px 0;
   font-size: 15px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 .filmCard h1 span {
   float: right;

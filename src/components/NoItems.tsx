@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as s from './NoItems.scss';
+import * as s from './scss/NoItems.scss';
 
 export const NoItems = () => {
   return <div className={s.noItems}>

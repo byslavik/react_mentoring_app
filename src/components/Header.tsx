@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as s from './Header.scss';
+import * as s from './scss/Header.scss';
 
 interface HeaderState {
 }

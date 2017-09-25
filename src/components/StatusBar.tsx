@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as s from './StatusBar.scss';
+import * as s from './scss/StatusBar.scss';
 
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
