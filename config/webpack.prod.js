@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = webpackMerge(commonConfig, {
 
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    // new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({ filename: '[name].css' }),
     new HtmlWebpackPlugin({
         hash: true,

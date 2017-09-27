@@ -1,52 +1,53 @@
 .filmCard {
+  flex-basis: calc(23% - 40px);
   flex-grow: 1;
   flex-shrink: 0;
-  flex-basis: calc(23% - 40px);
   margin: 20px;
   max-width: 25%;
 }
 .filmCard img {
   height: 294px;
   position: relative;
+  text-indent: -9999px;
   z-index: 2;
 }
 .filmCard h1 {
-  margin: 10px 0;
   font-size: 15px;
+  margin: 10px 0;
 
   a {
-    color: #000;
-    text-decoration: none;
+      color: #000;
+      text-decoration: none;
 
-    &:hover {
-      text-decoration: underline;
-    }
+      &:hover {
+          text-decoration: underline;
+      }
   }
 }
 .filmCard h1 span {
-  float: right;
   background: #fff;
   border: 1px solid #666;
   border-radius: 3px;
+  float: right;
   padding: 3px;
 }
 .imageWrap {
+  background: #ccc;
   height: 294px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
   width: 205px;
   z-index: 0;
-  background: #ccc;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
 
   &:before {
-    content: 'No Poster';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #666;
-    z-index: 1;
-    font-weight: bold;
+      color: #666;
+      content: 'No Poster';
+      font-weight: bold;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
   }
 }

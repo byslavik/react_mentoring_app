@@ -6,24 +6,36 @@ import * as s from './scss/FilmList.scss';
 
 import {Film} from '../models/film.model';
 
-export interface FilmCardListState {
+interface FilmCardListState {
 }
-export interface FilmCardListProps {
+interface FilmCardListProps {
+  films: Film[];
+  sort: string;
 }
 
-import {testData} from './testdata';
-export  class FilmList extends React.Component<FilmCardListProps, FilmCardListState> {
+
+export class FilmList extends React.Component<FilmCardListProps, FilmCardListState> {
+  constructor(props: any) {
+    super(props);
+  }
   buildCards(data: Film[]) {
     return data.map((item: Film, index) => {
       return <FilmCard key={index} item={item} /> 
     })
   }
+  sortBy = (first:Film, second: Film) => {
+    return second[this.props.sort] - first[this.props.sort];
+  }
 
   render() {
-    const cards:Array<any> = this.buildCards(testData);
+    const cards:Array<any> = this.buildCards(this.props.films ? this.props.films.sort(this.sortBy) : []);
     
     return <div className={s.filmList}>
       {cards.length != 0 ? cards : <NoItems/> }
     </div> 
   }
 }
+
+
+
+

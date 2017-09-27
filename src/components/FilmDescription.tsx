@@ -1,4 +1,9 @@
 import * as React from 'react';
+
+import { connect } from 'react-redux';
+
+import {getFilmsByTitle} from '../actions/films'
+
 import * as s from './scss/FilmDescripiton.scss';
 
 import {Film} from '../models/film.model';
@@ -7,32 +12,25 @@ import {Film} from '../models/film.model';
 interface FilmState {
 }
 interface FilmProps {
-  item: Film;
+  currentFilm?: Film;
+  getFilmsByQuery?: any;
+  match?:any
 }
 
 
-const filmData = {
-  unit: 1463,
-  show_id: 520179,
-  show_title: "Four Rooms",
-  release_year: "1995",
-  rating: "3.6",
-  category: "Comedies",
-  show_cast: "Tim Roth, Antonio Banderas, Jennifer Beals, Bruce Willis, Paul Calderon, Madonna, Marisa Tomei, Quentin Tarantino, Ione Skye, Lili Taylor",
-  director: "Quentin Tarantino, Robert Rodriguez, Allison Anders, Alexandre Rockwell",
-  summary: "One mad New Year's Eve, an overwhelmed bellboy copes with witches and diabolical children, gets caught in the middle of a sour relationship and settles a bloody bet for members of a superstar's entourage.",
-  poster: "http://netflixroulette.net/api/posters/520179.jpg",
-  mediatype: 0,
-  runtime: "98 min"
-  };
-
-export class FilmDescription extends React.Component<FilmProps, FilmState> {
-    constructor () {
-      super();
+class FilmDescription extends React.PureComponent <FilmProps, FilmState> {
+    shouldComponentUpdate(nextProps: FilmProps) {
+        return this.props.currentFilm.show_title !== nextProps.match.params.title;
     }
+    componentWillUpdate() {
+      this.props.getFilmsByQuery(this.props.match.params.title);
+    }
+    componentDidMount() {
+      this.props.getFilmsByQuery(this.props.match.params.title);
+    }
+    render() {
 
-    public render() {
-
+      const filmData = this.props.currentFilm;
         return (<article className={s.filmContainer}>
           <div className={s.imgWrap}>
             <img src={filmData.poster} alt={filmData.show_title}/>
@@ -53,3 +51,15 @@ export class FilmDescription extends React.Component<FilmProps, FilmState> {
         </article>)
     }
 }
+
+export default connect<any, any, any>(
+  (state: any) => ({
+    currentFilm: state.currentFilm,
+    path: state.routerReducer.location.pathname
+  }),
+  (dispatch: any) => ({
+    getFilmsByQuery: (query:string)=> {
+      dispatch(getFilmsByTitle(query, 'GET_FILM'));
+    }
+   })
+)(FilmDescription);

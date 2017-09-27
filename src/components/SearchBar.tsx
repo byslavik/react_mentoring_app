@@ -2,6 +2,9 @@ import * as React from 'react';
 import * as s from './scss/SearchBar.scss';
 
 import {Button} from './Button';
+import { connect } from 'react-redux';
+
+import {getFilmsByQuery} from '../actions/films';
 
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
@@ -12,10 +15,10 @@ interface SearchBarState {
 }
 interface SearchBarProps {
   match: any;
+  getFilmsByQuery: any;
 }
 
-
-export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   constructor(props:any) {
     super(props);
     
@@ -30,13 +33,28 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   changeMethod = (method: string) => {
     this.setState({method: method})
   }
+  componentWillMount() {
+    this.setState({searchWord: this.props.match.params.query || this.state.searchWord});
+  }
   componentDidMount() {
-    this.setState({searchWord: this.props.match.params.query});
+    if(!this.state.searchWord){
+      return;
+    }
+    this.props.getFilmsByQuery(this.state.method, this.state.searchWord);
+  }
+  makeSearch = ()=> {
+    history.pushState({},'','/search/' + this.state.searchWord); 
+    this.props.getFilmsByQuery(this.state.method, this.state.searchWord);   
+  }
+  buttonSearch = (event:any)=> {
+    if(event.key == 'Enter'){
+      this.makeSearch();
+    }
   }
   render() {
       return (<div className={s.searchBar}>
               <h2>Find your movie</h2>
-              <input type="text" value={this.state.searchWord} onChange={this.inputHandler} className={s.searchBarField}/>
+              <input type="text" value={this.state.searchWord} onChange={this.inputHandler} className={s.searchBarField} onKeyPress={this.buttonSearch}/>
               <div className={s.searchBarOptions}>
                   Search By:
 
@@ -49,7 +67,17 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                       </li>
                   </ul>
               </div>
-              <Button action={this.changeMethod.bind(this, 'title')} style={buttons.search}>Search</Button>
+              <Button action={this.makeSearch} style={buttons.search}>Search</Button>
       </div>);
   }
 }
+
+export default connect(
+  state => ({
+  }),
+  dispatch => ({
+    getFilmsByQuery: (method:string, query:string)=> {
+      dispatch(getFilmsByQuery(method, query, 'FETCH_FILMS'));
+    }
+   })
+)(SearchBar);

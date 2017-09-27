@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "allowJs": true,
     "strict": false,
     "noImplicitAny": true,
     "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "./built",
     "rootDirs": [
       "./",

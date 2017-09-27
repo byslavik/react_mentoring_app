@@ -21,7 +21,7 @@ export  class FilmCard extends React.Component<FilmCardProps, FilmCardState> {
         <div className={s.imageWrap}>
           <img src={item.poster} alt={item.show_title}/>
         </div>
-        <h1><Link to={`/film/${item.show_id}`}>{item.show_title}</Link> <span>{item.rating}</span></h1>
+        <h1><Link to={`/film/${item.show_title}`}>{item.show_title}</Link> <span>{item.rating}</span></h1>
         <p>{item.category}</p>
       </article>
     )

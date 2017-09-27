@@ -10,5 +10,6 @@ export interface Film {
   director: string,
   summary: string,
   poster: string,
-  runtime: string
+  runtime: string,
+  [key: string]: any
 }
