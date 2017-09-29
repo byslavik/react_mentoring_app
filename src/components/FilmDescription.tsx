@@ -8,14 +8,20 @@ import * as s from './scss/FilmDescripiton.scss';
 
 import {Film} from '../models/film.model';
 
-
 interface FilmState {
+
 }
 interface FilmProps {
   currentFilm?: Film;
   getFilmsByQuery?: any;
   match?:any
 }
+
+// 
+
+interface StateToProps extends FilmProps {
+}
+
 
 
 class FilmDescription extends React.PureComponent <FilmProps, FilmState> {
@@ -52,10 +58,9 @@ class FilmDescription extends React.PureComponent <FilmProps, FilmState> {
     }
 }
 
-export default connect<any, any, any>(
-  (state: any) => ({
-    currentFilm: state.currentFilm,
-    path: state.routerReducer.location.pathname
+export default connect<FilmProps, any, any>(
+  (state: FilmProps) => ({
+    currentFilm: state.currentFilm
   }),
   (dispatch: any) => ({
     getFilmsByQuery: (query:string)=> {

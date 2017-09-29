@@ -1,11 +1,11 @@
 interface action {
   type: string;
-  payload?: any;
+  payload: Film[];
 }
 
 import {Film} from '../models/film.model';
 
-export function films (state:Film[] = [], action:action) {
+export function films (state:Film[] = [], action:action):Film[] {
   if (action.type === 'FETCH_FILMS_SUCCESS') {
     if (!Array.isArray(action.payload)) {
       return [action.payload];

@@ -1,10 +1,10 @@
 interface action {
   type: string;
-  payload?: any;
+  payload: string;
 }
 
 
-export function sort (state:string = 'rating', action:action) {
+export function sort (state:string = 'rating', action:action):string {
   if (action.type === 'SORT_FILMS') {
     return action.payload
   }

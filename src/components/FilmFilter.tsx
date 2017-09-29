@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-import {getFilmsByTitle} from '../actions/films';
+import { getFilmsByTitle } from '../actions/films';
 
 import * as s from './scss/StatusBar.scss';
 
@@ -21,7 +21,7 @@ class FilmFilter extends React.Component<any, any> {
     }
 }
 
-export default connect<any, any, any>(
+export default connect(
   (state: any) => ({
     sort: state.sort
   }),

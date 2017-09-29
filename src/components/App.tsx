@@ -10,12 +10,22 @@ import SearchBar from './SearchBar';
 import {StatusBar} from './StatusBar';
 import {FilmCounter} from './FilmCounter';
 import FilmFilter from './FilmFilter';
-import {FilmList} from './FilmList';;
+import {FilmList} from './FilmList';
 
-class App extends React.Component<any, any> {
+import {Film} from '../models/film.model'
+
+interface AppProps {
+  sort?: string;
+  films?: Film[]
+}
+
+interface AppState {
+  
+}
+
+class App extends React.Component<AppProps, AppState> {
 
     render() {
-        console.log(this.props.sort);
         return (
             <div>
                 <Header>
@@ -31,6 +41,12 @@ class App extends React.Component<any, any> {
     }
 }
 
-export default connect<any, any, any>((state : any) => (
-    {films: state.films, sort: state.sort}
-), {})(App)
+export default connect<AppProps, any, any>(
+  (state : any) => ({
+      films: state.films, 
+      sort: state.sort
+    }),
+  (dispatch: any) => ({
+
+    })
+)(App)

@@ -15,9 +15,7 @@ interface FilmCardListProps {
 
 
 export class FilmList extends React.Component<FilmCardListProps, FilmCardListState> {
-  constructor(props: any) {
-    super(props);
-  }
+
   buildCards(data: Film[]) {
     return data.map((item: Film, index) => {
       return <FilmCard key={index} item={item} /> 
@@ -28,7 +26,7 @@ export class FilmList extends React.Component<FilmCardListProps, FilmCardListSta
   }
 
   render() {
-    const cards:Array<any> = this.buildCards(this.props.films ? this.props.films.sort(this.sortBy) : []);
+    const cards:any[] = this.buildCards(this.props.films ? this.props.films.sort(this.sortBy) : []);
     
     return <div className={s.filmList}>
       {cards.length != 0 ? cards : <NoItems/> }
