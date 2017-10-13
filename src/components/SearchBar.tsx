@@ -13,11 +13,12 @@ import * as utils from '../scss/utilities.scss';
 
 interface SearchBarState {
   searchWord: string;
-  method: 'people' | 'movie';
 }
 interface SearchBarProps {
   match: any;
+  method: 'person' | 'movie';
   getFilmsByQuery: any;
+  changeSearchMethod: any;
 }
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
@@ -25,16 +26,15 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     super(props);
     
     this.state = {
-      searchWord:  this.props.match.params.query || '',
-      method: 'movie'
+      searchWord:  this.props.match.params.query || ''
     }
     
   }
   inputHandler = (el:any) => {
     this.setState({searchWord: el.target.value})
   }
-  changeMethod = (method: SearchBarState['method']) => {
-    this.setState({method: method})
+  changeMethod = (method: string) => {
+   this.props.changeSearchMethod(method);
   }
   componentDidMount() {
     if(!this.state.searchWord){
@@ -42,7 +42,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     }
     let urlParams:urlParams = {
       type: 'search',
-      method: this.state.method,
+      method: this.props.method,
       query: this.state.searchWord
     };
     
@@ -53,7 +53,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     
     let urlParams:urlParams = {
       type: 'search',
-      method: this.state.method,
+      method: this.props.method,
       query: this.state.searchWord
     };
     
@@ -73,10 +73,10 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
                   <ul>
                       <li>
-                        <Button isActive={this.state.method == 'movie'} action={this.changeMethod.bind(this, 'movie')} >Movie</Button>
+                        <Button isActive={this.props.method == 'movie'} action={this.changeMethod.bind(this,'movie')} >Movie</Button>
                       </li>
                       <li>
-                        <Button isActive={this.state.method == 'people'} action={this.changeMethod.bind(this, 'people')} >People</Button>
+                        <Button isActive={this.props.method == 'person'} action={this.changeMethod.bind(this,'person')} >Person</Button>
                       </li>
                   </ul>
               </div>
@@ -87,10 +87,14 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
 export default connect(
   state => ({
+    method: state.searchMethod
   }),
   dispatch => ({
     getFilmsByQuery: (urlParams:urlParams)=> {
       dispatch(getFilmsByQuery(urlParams, 'FETCH_FILMS'));
+    },
+    changeSearchMethod: (method: string)=>{
+      dispatch({type: 'CHANGE_METHOD', payload: method});
     }
    })
 )(SearchBar);

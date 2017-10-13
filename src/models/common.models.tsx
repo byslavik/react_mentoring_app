@@ -1,5 +1,5 @@
 export interface urlParams {
   type: 'search' | 'movie';
-  method?: 'people' | 'movie';
+  method?: 'person' | 'movie';
   query: string;
 }

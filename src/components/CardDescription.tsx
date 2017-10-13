@@ -8,11 +8,10 @@ import {urlParams} from './../models/common.models';
 
 import * as s from './scss/FilmDescripiton.scss';
 
-import {FullFilm} from '../models/film.model';
+import {FullFilm, Film} from '../models/film.model';
+import {Person} from '../models/person.model';
 import {SETTINGS} from './../settings';
-interface FilmState {
 
-}
 interface FilmProps {
   currentFilm?: FullFilm;
   getFilmsByQuery?: any;
@@ -26,19 +25,28 @@ interface StateToProps extends FilmProps {
 
 
 
-class FilmDescription extends React.PureComponent <FilmProps, FilmState> {
+class CardDescription extends React.PureComponent <FilmProps, any> {
     componentWillMount() {
+      this.getItems(this.props.match.params.id)
+    }
+    componentWillReceiveProps(nextProps:any){
+      if(this.props.match.params.id != nextProps.match.params.id) {
+        this.getItems(nextProps.match.params.id)
+      }
+    }
+    getItems(id:string) {
+      
       let params:urlParams = {
         type:'movie',
-        query: this.props.match.params.id
+        query: id
       }
       this.props.getFilmsByQuery(params);
     }
     render() {
 
       const filmData = this.props.currentFilm;
-      console.log(filmData);
-        return (<article className={s.filmContainer}>
+      
+        return (<article className={s.filmContainer} key={this.props.match.params.id}>
           <div className={s.imgWrap}>
             <img src={SETTINGS.imgUrl + filmData.poster_path} alt={filmData.original_title}/>
           </div>
@@ -62,4 +70,4 @@ export default connect<FilmProps, any, any>(
       dispatch(getFilmsByQuery(query, 'GET_FILM'));
     }
    })
-)(FilmDescription);
+)(CardDescription);

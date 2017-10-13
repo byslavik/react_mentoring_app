@@ -16,7 +16,8 @@ import {Film} from '../models/film.model'
 
 interface AppProps {
   sort?: 'popularity' | 'vote_count';
-  films?: Film[]
+  films?: Film[],
+  searchMethod: 'movie' | 'person'
 }
 
 interface AppState {
@@ -35,7 +36,7 @@ class App extends React.Component<AppProps, AppState> {
                     status={<FilmCounter count = {this.props.films.length} />}
                     options={<FilmFilter />}
                 />
-                <FilmList films={this.props.films} sort={this.props.sort}/>
+                <FilmList films={this.props.films} sort={this.props.sort} method={this.props.searchMethod}/>
             </div>
         )
     }
@@ -44,7 +45,8 @@ class App extends React.Component<AppProps, AppState> {
 export default connect<AppProps, any, any>(
   (state : any) => ({
       films: state.films, 
-      sort: state.sort
+      sort: state.sort,
+      searchMethod: state.searchMethod
     }),
   (dispatch: any) => ({
 

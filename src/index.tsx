@@ -16,7 +16,7 @@ import {NoItems} from './components/NoItems';
 
 import SearchBar from './components/SearchBar';
 import {HeaderTitle} from './components/HeaderTitle';
-import FilmDescription from './components/FilmDescription';
+import CardDescription from './components/CardDescription';
 
 import './scss/core.scss';
 
@@ -43,7 +43,7 @@ const render = () => {
               <App>
                   <Route exact path="/" component={SearchBar}/>
                   <Route path="/search/:query?" component={SearchBar}/>
-                  <Route path="/film/:title/:id" component={FilmDescription}/>
+                  <Route path="/film/:title/:id" component={CardDescription}/>
               </App>
             </Switch>
           </ConnectedRouter>
