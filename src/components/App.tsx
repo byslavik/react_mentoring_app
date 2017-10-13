@@ -15,7 +15,7 @@ import {FilmList} from './FilmList';
 import {Film} from '../models/film.model'
 
 interface AppProps {
-  sort?: string;
+  sort?: 'popularity' | 'vote_count';
   films?: Film[]
 }
 

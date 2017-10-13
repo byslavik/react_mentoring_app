@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { Film } from '../models/film.model';
 
+import {SETTINGS} from './../settings';
 
 interface FilmCardState {
 }
@@ -16,13 +17,13 @@ interface FilmCardProps {
 export  class FilmCard extends React.Component<FilmCardProps, FilmCardState> {
   render () {
     const item:Film = this.props.item;
+    const popularity:any = item.popularity;
     return (
       <article className={s.filmCard}>
         <div className={s.imageWrap}>
-          <img src={item.poster} alt={item.show_title}/>
+          <img src={SETTINGS.imgUrl + item.poster_path} alt={item.title}/>
         </div>
-        <h1><Link to={`/film/${item.show_title}`}>{item.show_title}</Link> <span>{item.rating}</span></h1>
-        <p>{item.category}</p>
+        <h1><Link to={`/film/${item.title}/${item.id}`}>{item.title}</Link> <span>{(Math.round(popularity * 100) / 100 )}</span></h1>
       </article>
     )
   }

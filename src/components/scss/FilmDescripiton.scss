@@ -40,6 +40,7 @@
 .imgWrap img {
   text-indent: -9999px;
   position: relative;
+  width: 200px;
   z-index: 1;
 }
 .filmDescription h1 {
@@ -52,14 +53,14 @@
   border-radius: 50%;
   color: greenyellow;
   display: inline-block;
-  font-size: 28px;
+  font-size: 19px;
   font-weight: normal;
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   margin-top: 5px;
   text-align: center;
   vertical-align: top;
-  width: 50px;
+  width: 60px;
 }
 .filmCategory {
   color: #ccc;

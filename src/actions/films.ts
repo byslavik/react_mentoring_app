@@ -1,5 +1,10 @@
-export const getFilmsByQuery = (type:string, query:string, dispatchType:string) => (dispatch:any) => {
-  const link = `https://netflixroulette.net/api/api.php?${type}=${query}`;
+import {urlGenerator} from './../utilities';
+
+import {urlParams} from './../models/common.models'; 
+
+
+export const getFilmsByQuery = (urlParams: urlParams, dispatchType:string) => (dispatch:any) => {
+  const link = urlGenerator(urlParams);
   const promise = new Promise((resolve:any, reject:any) => {
             fetch(link)
                 .then((response) => {
@@ -11,7 +16,7 @@ export const getFilmsByQuery = (type:string, query:string, dispatchType:string) 
                       return;
                     }
                     
-                    resolve(data);
+                    resolve(data.results ? data.results : data);
                 })
                 .catch((err) => {
                     reject(err)
@@ -26,4 +31,3 @@ export const getFilmsByQuery = (type:string, query:string, dispatchType:string) 
             dispatch({ type: `${dispatchType}_FAILED`, payload: error });
         });
 }
-export const getFilmsByTitle = getFilmsByQuery.bind(this, 'title');

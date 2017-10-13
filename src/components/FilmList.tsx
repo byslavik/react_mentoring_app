@@ -6,15 +6,14 @@ import * as s from './scss/FilmList.scss';
 
 import {Film} from '../models/film.model';
 
-interface FilmCardListState {
-}
+
 interface FilmCardListProps {
   films: Film[];
-  sort: string;
+  sort: 'popularity' | 'vote_count';
 }
 
 
-export class FilmList extends React.Component<FilmCardListProps, FilmCardListState> {
+export class FilmList extends React.Component<FilmCardListProps, any> {
 
   buildCards(data: Film[]) {
     return data.map((item: Film, index) => {
@@ -22,7 +21,10 @@ export class FilmList extends React.Component<FilmCardListProps, FilmCardListSta
     })
   }
   sortBy = (first:Film, second: Film) => {
-    return second[this.props.sort] - first[this.props.sort];
+    const one:any = first[this.props.sort];
+    const two:any = second[this.props.sort];
+    
+    return two - one;
   }
 
   render() {

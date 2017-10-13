@@ -1,15 +1,39 @@
 // Separate page for film
 
 export interface Film {
-  show_id: number,
-  show_title: string,
-  release_year: string,
-  rating: string,
-  category: string,
-  show_cast: string,
-  director: string,
-  summary: string,
-  poster: string,
-  runtime: string,
-  [key: string]: any
+  vote_count: number,
+  id: number,
+  video: boolean,
+  vote_average: number,
+  title: string,
+  popularity: string,
+  poster_path: string,
+  original_language: string,
+  original_title: string,
+  genre_ids: number[],
+  backdrop_path: string,
+  adult: boolean,
+  overview: string,
+  release_date: string
+}
+
+
+
+export interface FullFilm {
+  adult: boolean,
+  id: number,
+  original_language: string,
+  original_title: string,
+  overview: string,
+  popularity: number,
+  poster_path: string,
+  release_date: string,
+  revenue: number,
+  runtime: number,
+  status: string,
+  tagline: string,
+  title: string,
+  video: boolean,
+  vote_average: number,
+  vote_count: number
 }

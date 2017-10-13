@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 
 import {getFilmsByQuery} from '../actions/films';
 
+import {urlParams} from './../models/common.models'; 
+
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
 
 interface SearchBarState {
   searchWord: string;
-  method: string;
+  method: 'people' | 'movie';
 }
 interface SearchBarProps {
   match: any;
@@ -23,28 +25,39 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     super(props);
     
     this.state = {
-      searchWord: '',
-      method: 'title'
+      searchWord:  this.props.match.params.query || '',
+      method: 'movie'
     }
+    
   }
   inputHandler = (el:any) => {
     this.setState({searchWord: el.target.value})
   }
-  changeMethod = (method: string) => {
+  changeMethod = (method: SearchBarState['method']) => {
     this.setState({method: method})
-  }
-  componentWillMount() {
-    this.setState({searchWord: this.props.match.params.query || this.state.searchWord});
   }
   componentDidMount() {
     if(!this.state.searchWord){
       return;
     }
-    this.props.getFilmsByQuery(this.state.method, this.state.searchWord);
+    let urlParams:urlParams = {
+      type: 'search',
+      method: this.state.method,
+      query: this.state.searchWord
+    };
+    
+    this.props.getFilmsByQuery(urlParams);
   }
   makeSearch = ()=> {
     history.pushState({},'','/search/' + this.state.searchWord); 
-    this.props.getFilmsByQuery(this.state.method, this.state.searchWord);   
+    
+    let urlParams:urlParams = {
+      type: 'search',
+      method: this.state.method,
+      query: this.state.searchWord
+    };
+    
+    this.props.getFilmsByQuery(urlParams);   
   }
   buttonSearch = (event:any)=> {
     if(event.key == 'Enter'){
@@ -60,10 +73,10 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
                   <ul>
                       <li>
-                        <Button isActive={this.state.method == 'title'} action={this.changeMethod.bind(this, 'title')} >Title</Button>
+                        <Button isActive={this.state.method == 'movie'} action={this.changeMethod.bind(this, 'movie')} >Movie</Button>
                       </li>
                       <li>
-                        <Button isActive={this.state.method == 'director'} action={this.changeMethod.bind(this, 'director')} >Director</Button>
+                        <Button isActive={this.state.method == 'people'} action={this.changeMethod.bind(this, 'people')} >People</Button>
                       </li>
                   </ul>
               </div>
@@ -76,8 +89,8 @@ export default connect(
   state => ({
   }),
   dispatch => ({
-    getFilmsByQuery: (method:string, query:string)=> {
-      dispatch(getFilmsByQuery(method, query, 'FETCH_FILMS'));
+    getFilmsByQuery: (urlParams:urlParams)=> {
+      dispatch(getFilmsByQuery(urlParams, 'FETCH_FILMS'));
     }
    })
 )(SearchBar);

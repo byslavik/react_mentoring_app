@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-import { getFilmsByTitle } from '../actions/films';
 
 import * as s from './scss/StatusBar.scss';
 
@@ -15,8 +14,8 @@ class FilmFilter extends React.Component<any, any> {
     render() {
         return (<ul>
           <li style={{fontWeight: "bold"}}>Sort By: </li>
-          <li><button className={this.props.sort == 'release_year' ? s.active : ''} onClick={this.sortFilms.bind(this, 'release_year')}>by Release Date</button></li>
-          <li><button className={this.props.sort == 'rating' ? s.active : ''} onClick={this.sortFilms.bind(this, 'rating')}>by Rating</button></li>
+          <li><button className={this.props.sort == 'vote_count' ? s.active : ''} onClick={this.sortFilms.bind(this, 'vote_count')}>by Votes Count</button></li>
+          <li><button className={this.props.sort == 'popularity' ? s.active : ''} onClick={this.sortFilms.bind(this, 'popularity')}>by Popularity</button></li>
       </ul> )
     }
 }

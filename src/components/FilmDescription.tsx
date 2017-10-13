@@ -2,17 +2,19 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-import {getFilmsByTitle} from '../actions/films'
+import {getFilmsByQuery} from '../actions/films';
+
+import {urlParams} from './../models/common.models'; 
 
 import * as s from './scss/FilmDescripiton.scss';
 
-import {Film} from '../models/film.model';
-
+import {FullFilm} from '../models/film.model';
+import {SETTINGS} from './../settings';
 interface FilmState {
 
 }
 interface FilmProps {
-  currentFilm?: Film;
+  currentFilm?: FullFilm;
   getFilmsByQuery?: any;
   match?:any
 }
@@ -25,34 +27,27 @@ interface StateToProps extends FilmProps {
 
 
 class FilmDescription extends React.PureComponent <FilmProps, FilmState> {
-    shouldComponentUpdate(nextProps: FilmProps) {
-        return this.props.currentFilm.show_title !== nextProps.match.params.title;
-    }
-    componentWillUpdate() {
-      this.props.getFilmsByQuery(this.props.match.params.title);
-    }
-    componentDidMount() {
-      this.props.getFilmsByQuery(this.props.match.params.title);
+    componentWillMount() {
+      let params:urlParams = {
+        type:'movie',
+        query: this.props.match.params.id
+      }
+      this.props.getFilmsByQuery(params);
     }
     render() {
 
       const filmData = this.props.currentFilm;
+      console.log(filmData);
         return (<article className={s.filmContainer}>
           <div className={s.imgWrap}>
-            <img src={filmData.poster} alt={filmData.show_title}/>
+            <img src={SETTINGS.imgUrl + filmData.poster_path} alt={filmData.original_title}/>
           </div>
           <div className={s.filmDescription}>
-            <h1>{filmData.show_title} <span>{filmData.rating}</span></h1>
-            <p className={s.filmCategory}>{filmData.category}</p>
+            <h1>{filmData.title} <span>{(Math.round(filmData.popularity * 100)/100)}</span></h1>
             <ul className={s.fimInfo}>
-              <li>{filmData.release_year}</li>
-              <li>{filmData.runtime}</li>
+              <li>{filmData.release_date}</li>
             </ul>
-            <p className={s.filmSummary}>{filmData.summary}</p>
-            <p className={s.filmAdditional}>
-              <span>Director: {filmData.director}</span>  
-              <span>Cast: {filmData.show_cast}</span>  
-            </p>
+            <p className={s.filmSummary}>{filmData.overview}</p>
           </div>
         </article>)
     }
@@ -63,8 +58,8 @@ export default connect<FilmProps, any, any>(
     currentFilm: state.currentFilm
   }),
   (dispatch: any) => ({
-    getFilmsByQuery: (query:string)=> {
-      dispatch(getFilmsByTitle(query, 'GET_FILM'));
+    getFilmsByQuery: (query:urlParams)=> {
+      dispatch(getFilmsByQuery(query, 'GET_FILM'));
     }
    })
 )(FilmDescription);
