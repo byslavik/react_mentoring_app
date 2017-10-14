@@ -51,7 +51,7 @@ class CardDescription extends React.PureComponent <FilmProps, any> {
             <img src={SETTINGS.imgUrl + filmData.poster_path} alt={filmData.original_title}/>
           </div>
           <div className={s.filmDescription}>
-            <h1>{filmData.title} <span>{(Math.round(filmData.popularity * 100)/100)}</span></h1>
+            <h1>{filmData.title} <span>{(Math.round(filmData.popularity * 10)/10)}</span></h1>
             <ul className={s.fimInfo}>
               <li>{filmData.release_date}</li>
             </ul>

@@ -10,7 +10,7 @@ import {Person} from '../models/person.model';
 
 
 interface FilmCardListProps {
-  films: Film[] | Person[];
+  films: Film[];
   sort: 'popularity' | 'vote_count';
   method: 'movie' | 'person';
 }
@@ -18,10 +18,10 @@ interface FilmCardListProps {
 
 export class FilmList extends React.Component<FilmCardListProps, any> {
 
-  buildCards(data: Film[] | Person[]) {
-    const CardComponent: React.ComponentClass = this.props.method == 'movie' ? FilmCard : PersonCard;
+  buildCards(data: Film[] ) {
+    const CardComponent = this.props.method == 'movie' ? FilmCard : PersonCard;
 
-    return data.map((item: Film | Person, index) => {
+    return data.map((item: Film, index) => {
       return <CardComponent key={index} item={item} />;
     })
   }
@@ -33,7 +33,7 @@ export class FilmList extends React.Component<FilmCardListProps, any> {
   }
 
   render() {
-    const cards:JSX.Element[] = this.buildCards(this.props.films ? this.props.films : []);
+    const cards:JSX.Element[] = this.buildCards(this.props.films ? this.props.films.sort(this.sortBy) : []);
     
     return <div className={s.filmList}>
       {cards.length != 0 ? cards : <NoItems/> }

@@ -44,6 +44,7 @@ const render = () => {
                   <Route exact path="/" component={SearchBar}/>
                   <Route path="/search/:query?" component={SearchBar}/>
                   <Route path="/film/:title/:id" component={CardDescription}/>
+                  <Route path="/person/:name/:id" component={CardDescription}/>
               </App>
             </Switch>
           </ConnectedRouter>

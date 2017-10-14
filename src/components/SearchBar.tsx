@@ -13,10 +13,10 @@ import * as utils from '../scss/utilities.scss';
 
 interface SearchBarState {
   searchWord: string;
+  method: 'person' | 'movie';
 }
 interface SearchBarProps {
   match: any;
-  method: 'person' | 'movie';
   getFilmsByQuery: any;
   changeSearchMethod: any;
 }
@@ -26,15 +26,16 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     super(props);
     
     this.state = {
-      searchWord:  this.props.match.params.query || ''
+      searchWord:  this.props.match.params.query || '',
+      method: 'movie'
     }
     
   }
   inputHandler = (el:any) => {
     this.setState({searchWord: el.target.value})
   }
-  changeMethod = (method: string) => {
-   this.props.changeSearchMethod(method);
+  changeMethod = (method: 'person' | 'movie') => {
+   this.setState({method: method})
   }
   componentDidMount() {
     if(!this.state.searchWord){
@@ -42,7 +43,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     }
     let urlParams:urlParams = {
       type: 'search',
-      method: this.props.method,
+      method: this.state.method,
       query: this.state.searchWord
     };
     
@@ -53,10 +54,11 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     
     let urlParams:urlParams = {
       type: 'search',
-      method: this.props.method,
+      method: this.state.method,
       query: this.state.searchWord
     };
     
+    this.props.changeSearchMethod(this.state.method);
     this.props.getFilmsByQuery(urlParams);   
   }
   buttonSearch = (event:any)=> {
@@ -73,10 +75,10 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
                   <ul>
                       <li>
-                        <Button isActive={this.props.method == 'movie'} action={this.changeMethod.bind(this,'movie')} >Movie</Button>
+                        <Button isActive={this.state.method == 'movie'} action={this.changeMethod.bind(this,'movie')} >Movie</Button>
                       </li>
                       <li>
-                        <Button isActive={this.props.method == 'person'} action={this.changeMethod.bind(this,'person')} >Person</Button>
+                        <Button isActive={this.state.method == 'person'} action={this.changeMethod.bind(this,'person')} >Person</Button>
                       </li>
                   </ul>
               </div>

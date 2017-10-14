@@ -13,6 +13,8 @@ export interface Film {
   genre_ids: number[],
   backdrop_path: string,
   adult: boolean,
+  name: string,
+  profile_path: string,
   overview: string,
   release_date: string
 }
