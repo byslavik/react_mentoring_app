@@ -6,13 +6,15 @@ interface action {
 import {Film} from '../models/film.model';
 
 export function films (state:Film[] = [], action:action):Film[] {
-  if (action.type === 'FETCH_FILMS_SUCCESS') {
-    if (!Array.isArray(action.payload)) {
-      return [action.payload];
-    }
-    return action.payload;
-  } else if (action.type === 'FETCH_FILMS_FAILED') {
-    return [];
+  switch (action.type) {
+    case  'FETCH_FILMS_SUCCESS':
+      if (!Array.isArray(action.payload)) {
+        return [action.payload];
+      }
+      return action.payload;
+    case  'FETCH_FILMS_FAILED':
+      return [];
+    default:
+      return state;
   }
-  return state;
 }

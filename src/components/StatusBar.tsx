@@ -4,14 +4,13 @@ import * as s from './scss/StatusBar.scss';
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
 
-interface StatusBarState {
-}
+
 interface StatusBarProps {
-  status: Object;
-  options: Object;
+  status: JSX.Element;
+  options: JSX.Element;
 }
 
-export class StatusBar extends React.Component<StatusBarProps, StatusBarState> {
+export class StatusBar extends React.Component<StatusBarProps, any> {
     constructor(props:StatusBarProps){
         super(props);
     }

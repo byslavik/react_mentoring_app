@@ -6,8 +6,10 @@ interface action {
 import {Film} from '../models/film.model';
 
 export function currentFilm (state = {}, action:action) {
-  if (action.type === 'GET_FILM_SUCCESS') {
-    return action.payload;
+  switch (action.type) {
+    case  'GET_FILM_SUCCESS':
+      return action.payload;
+    default:
+      return state;
   }
-  return state;
 }

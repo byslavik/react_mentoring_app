@@ -7,13 +7,14 @@ import { connect } from 'react-redux';
 import {getFilmsByQuery} from '../actions/films';
 
 import {urlParams} from './../models/common.models'; 
+import {ReduxStore} from './../models/redux.model'; 
 
 import * as buttons from '../scss/buttons.scss';
 import * as utils from '../scss/utilities.scss';
 
 interface SearchBarState {
   searchWord: string;
-  method: 'person' | 'movie';
+  method: urlParams['method'];
 }
 interface SearchBarProps {
   match: any;
@@ -22,8 +23,8 @@ interface SearchBarProps {
 }
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-  constructor(props:any) {
-    super(props);
+  constructor() {
+    super();
     
     this.state = {
       searchWord:  this.props.match.params.query || '',
@@ -34,7 +35,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   inputHandler = (el:any) => {
     this.setState({searchWord: el.target.value})
   }
-  changeMethod = (method: 'person' | 'movie') => {
+  changeMethod = (method: urlParams['method']) => {
    this.setState({method: method})
   }
   componentDidMount() {
@@ -86,17 +87,22 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
       </div>);
   }
 }
-
-export default connect(
-  state => ({
+function changeMethod(field:urlParams['method']) {
+  return {
+    type: "CHANGE_METHOD",
+    payload: field
+  }
+}
+export default connect<any,any,any>(
+  (state:ReduxStore) => ({
     method: state.searchMethod
   }),
-  dispatch => ({
+  (dispatch:any) => ({
     getFilmsByQuery: (urlParams:urlParams)=> {
       dispatch(getFilmsByQuery(urlParams, 'FETCH_FILMS'));
     },
-    changeSearchMethod: (method: string)=>{
-      dispatch({type: 'CHANGE_METHOD', payload: method});
+    changeSearchMethod: (method: urlParams['method'])=>{
+      dispatch(changeMethod(method));
     }
    })
 )(SearchBar);

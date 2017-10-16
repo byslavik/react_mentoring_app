@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-interface FilmCounterState {
-}
+
 interface FilmCounterProps {
   count: number;
 }
 
-export class FilmCounter extends React.Component<FilmCounterProps, FilmCounterState> {
+export class FilmCounter extends React.Component<FilmCounterProps, any> {
 
     render() {
       let count = this.props.count;

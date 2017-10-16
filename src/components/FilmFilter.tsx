@@ -2,12 +2,19 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
+import { sortFields } from '../models/common.models';
+import {ReduxStore} from './../models/redux.model'; 
 
 import * as s from './scss/StatusBar.scss';
 
-class FilmFilter extends React.Component<any, any> {
+interface FilterProps {
+  sort: sortFields['fields'],
+  sortFilms: any
+}
+
+class FilmFilter extends React.Component<FilterProps, any> {
   
-  sortFilms = (byfield:string)=> {
+  sortFilms = (byfield:sortFields['fields'])=> {
     this.props.sortFilms(byfield);
   }
 
@@ -19,14 +26,17 @@ class FilmFilter extends React.Component<any, any> {
       </ul> )
     }
 }
-
+function sortFilm(byfield:sortFields['fields']) {
+  return {
+    type: "SORT_FILMS",
+    payload: byfield
+  }
+}
 export default connect(
-  (state: any) => ({
+  (state: ReduxStore) => ({
     sort: state.sort
   }),
   (dispatch: any) => ({
-    sortFilms: (byfield:string)=> {
-      dispatch({type: "SORT_FILMS", payload: byfield});
-    }
+    sortFilms: (byfield:sortFields['fields'])=> dispatch(sortFilm(byfield))
    })
 )(FilmFilter);

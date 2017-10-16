@@ -9,23 +9,19 @@ import {urlParams} from './../models/common.models';
 import * as s from './scss/FilmDescripiton.scss';
 
 import {FullFilm, Film} from '../models/film.model';
-import {Person} from '../models/person.model';
+import {Person, FullPerson} from '../models/person.model';
+import {ReduxStore} from './../models/redux.model'; 
 import {SETTINGS} from './../settings';
 
-interface FilmProps {
-  currentFilm?: FullFilm;
+interface PersonProps {
+  currentFilm?: FullPerson;
   getFilmsByQuery?: any;
   match?:any
 }
 
-// 
-
-interface StateToProps extends FilmProps {
-}
 
 
-
-class CardDescription extends React.PureComponent <FilmProps, any> {
+class PersonDescription extends React.PureComponent <PersonProps, any> {
     componentWillMount() {
       this.getItems(this.props.match.params.id)
     }
@@ -37,32 +33,29 @@ class CardDescription extends React.PureComponent <FilmProps, any> {
     getItems(id:string) {
       
       let params:urlParams = {
-        type:'movie',
+        type: "person",
         query: id
       }
       this.props.getFilmsByQuery(params);
     }
     render() {
 
-      const filmData = this.props.currentFilm;
+      const personData = this.props.currentFilm;
       
         return (<article className={s.filmContainer} key={this.props.match.params.id}>
           <div className={s.imgWrap}>
-            <img src={SETTINGS.imgUrl + filmData.poster_path} alt={filmData.original_title}/>
+            <img src={SETTINGS.imgUrl + personData.profile_path} alt={personData.name}/>
           </div>
           <div className={s.filmDescription}>
-            <h1>{filmData.title} <span>{(Math.round(filmData.popularity * 10)/10)}</span></h1>
-            <ul className={s.fimInfo}>
-              <li>{filmData.release_date}</li>
-            </ul>
-            <p className={s.filmSummary}>{filmData.overview}</p>
+            <h1>{personData.name} <span>{(Math.round(personData.popularity * 10)/10)}</span></h1>
+            <p className={s.filmSummary}>{personData.biography}</p>
           </div>
         </article>)
     }
 }
 
-export default connect<FilmProps, any, any>(
-  (state: FilmProps) => ({
+export default connect<any, any, any>(
+  (state: ReduxStore) => ({
     currentFilm: state.currentFilm
   }),
   (dispatch: any) => ({
@@ -70,4 +63,4 @@ export default connect<FilmProps, any, any>(
       dispatch(getFilmsByQuery(query, 'GET_FILM'));
     }
    })
-)(CardDescription);
+)(PersonDescription);

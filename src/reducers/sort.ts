@@ -5,8 +5,10 @@ interface action {
 
 
 export function sort (state:string = 'popularity', action:action):string {
-  if (action.type === 'SORT_FILMS') {
-    return action.payload
+  switch (action.type) {
+    case  'SORT_FILMS':
+      return action.payload;
+    default:
+      return state;
   }
-  return state;
 }

@@ -7,12 +7,12 @@ import * as s from './scss/FilmList.scss';
 
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model';
-
+import {urlParams, sortFields} from '../models/common.models'
 
 interface FilmCardListProps {
   films: Film[];
-  sort: 'popularity' | 'vote_count';
-  method: 'movie' | 'person';
+  sort: sortFields['fields'];
+  method: urlParams['method'];
 }
 
 
@@ -22,7 +22,7 @@ export class FilmList extends React.Component<FilmCardListProps, any> {
     const CardComponent = this.props.method == 'movie' ? FilmCard : PersonCard;
 
     return data.map((item: Film, index) => {
-      return <CardComponent key={index} item={item} />;
+      return <CardComponent key={item.id} item={item} />;
     })
   }
   sortBy = (first:Film, second: Film) => {

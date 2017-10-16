@@ -7,14 +7,13 @@ import { Film } from '../models/film.model';
 
 import {SETTINGS} from './../settings';
 
-interface FilmCardState {
-}
+
 interface FilmCardProps {
   item: Film;
   key?: number;
 }
 
-export  class FilmCard extends React.Component<FilmCardProps, FilmCardState> {
+export  class FilmCard extends React.Component<FilmCardProps, any> {
   render () {
     const item:Film = this.props.item;
     const popularity:any = item.popularity;

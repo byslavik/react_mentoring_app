@@ -12,19 +12,18 @@ import {FilmCounter} from './FilmCounter';
 import FilmFilter from './FilmFilter';
 import {FilmList} from './FilmList';
 
-import {Film} from '../models/film.model'
+import {Film} from '../models/film.model';
+import {Person} from '../models/person.model'
+import {ReduxStore} from '../models/redux.model';
+import {urlParams, sortFields} from '../models/common.models'
 
 interface AppProps {
-  sort?: 'popularity' | 'vote_count';
+  sort?: sortFields['fields'];
   films?: Film[],
-  searchMethod: 'movie' | 'person'
+  searchMethod: urlParams['method']
 }
 
-interface AppState {
-  
-}
-
-class App extends React.Component<AppProps, AppState> {
+class App extends React.Component<AppProps, any> {
 
     render() {
         return (
@@ -42,8 +41,8 @@ class App extends React.Component<AppProps, AppState> {
     }
 }
 
-export default connect<AppProps, any, any>(
-  (state : any) => ({
+export default connect<any, any, any>(
+  (state : ReduxStore) => ({
       films: state.films, 
       sort: state.sort,
       searchMethod: state.searchMethod
