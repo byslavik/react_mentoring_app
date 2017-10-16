@@ -23,11 +23,12 @@ interface SearchBarProps {
 }
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-  constructor() {
-    super();
+  constructor(props:SearchBarProps) {
+    super(props);
+
     
     this.state = {
-      searchWord:  this.props.match.params.query || '',
+      searchWord: this.props.match.params.query || '',
       method: 'movie'
     }
     

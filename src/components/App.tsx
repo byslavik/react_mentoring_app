@@ -10,7 +10,7 @@ import SearchBar from './SearchBar';
 import {StatusBar} from './StatusBar';
 import {FilmCounter} from './FilmCounter';
 import FilmFilter from './FilmFilter';
-import {FilmList} from './FilmList';
+import FilmList from './FilmList';
 
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model'

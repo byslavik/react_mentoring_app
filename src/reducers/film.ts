@@ -12,6 +12,8 @@ export function films (state:Film[] = [], action:action):Film[] {
         return [action.payload];
       }
       return action.payload;
+    case 'UPDATE_FILMS_STATE':
+      return action.payload;
     case  'FETCH_FILMS_FAILED':
       return [];
     default:
