@@ -22,7 +22,7 @@ interface FilmProps {
 
 
 
-class FilmDescription extends React.PureComponent <FilmProps, any> {
+export class FilmDescription extends React.PureComponent <FilmProps, any> {
     componentWillMount() {
       this.getItems(this.props.match.params.id)
     }
@@ -32,12 +32,8 @@ class FilmDescription extends React.PureComponent <FilmProps, any> {
       }
     }
     getItems(id:string) {
-      let requestType:urlParams['type'] = 'movie';
-      if(this.props.match.params.name) {
-        requestType = "person"
-      }
       let params:urlParams = {
-        type: requestType,
+        type: 'movie',
         query: id
       }
       this.props.getFilmsByQuery(params);
@@ -63,7 +59,7 @@ class FilmDescription extends React.PureComponent <FilmProps, any> {
 
 export default connect<any, any, any>(
   (state: ReduxStore) => ({
-    currentFilm: state.currentFilm
+    currentFilm: state.films.currentFilm
   }),
   (dispatch: any) => ({
     getFilmsByQuery: (query:urlParams)=> {

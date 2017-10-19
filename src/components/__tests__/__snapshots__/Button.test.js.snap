@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Button component shows correctly 1`] = `
+<button
+  className="red"
+  onClick={[Function]}
+>
+  Button
+</button>
+`;
+
+exports[`Button component Button gets active class 1`] = `
+<button
+  className="red undefined"
+  onClick={[Function]}
+>
+  Button
+</button>
+`;

@@ -56,7 +56,7 @@ class PersonDescription extends React.PureComponent <PersonProps, any> {
 
 export default connect<any, any, any>(
   (state: ReduxStore) => ({
-    currentFilm: state.currentFilm
+    currentFilm: state.films.currentFilm
   }),
   (dispatch: any) => ({
     getFilmsByQuery: (query:urlParams)=> {

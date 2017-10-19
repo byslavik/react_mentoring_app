@@ -1,4 +1,4 @@
-import {urlParams} from '../models/common.models'
+import {searchMethod} from '../models/common.models'
 
 interface action {
   type: string;
@@ -6,7 +6,7 @@ interface action {
 }
 
 
-export function searchMethod (state:urlParams['method'] = 'movie', action:action):string {
+export function searchMethod (state:searchMethod = 'movie', action:action):string {
   switch (action.type) {
     case  'CHANGE_METHOD':
       return action.payload;

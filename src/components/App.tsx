@@ -15,12 +15,12 @@ import FilmList from './FilmList';
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model'
 import {ReduxStore} from '../models/redux.model';
-import {urlParams, sortFields} from '../models/common.models'
+import {searchMethod, sortFields} from '../models/common.models'
 
 interface AppProps {
-  sort?: sortFields['fields'];
+  sort?: sortFields;
   films?: Film[],
-  searchMethod: urlParams['method']
+  searchMethod: searchMethod
 }
 
 class App extends React.Component<AppProps, any> {
@@ -43,8 +43,8 @@ class App extends React.Component<AppProps, any> {
 
 export default connect<any, any, any>(
   (state : ReduxStore) => ({
-      films: state.films, 
-      sort: state.sort,
+      films: state.films.allFilms, 
+      sort: state.films.sort,
       searchMethod: state.searchMethod
     }),
   (dispatch: any) => ({

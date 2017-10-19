@@ -7,23 +7,21 @@ import * as s from './scss/FilmList.scss';
 
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model';
-import {urlParams, sortFields} from '../models/common.models';
-
-import {sortFilm} from './hoc/sortFilms';
+import {searchMethod, sortFields} from '../models/common.models';
 
 interface FilmListProps {
-  films: Film[];
-  sort: sortFields['fields'];
-  method: urlParams['method'];
+  films: Film[] | Person[];
+  sort: sortFields;
+  method: searchMethod;
 }
 
 
 class FilmList extends React.Component<FilmListProps, any> {
 
-  buildCards(data: Film[] ) {
+  buildCards(data: Film[] | Person[])  {
     const CardComponent = this.props.method == 'movie' ? FilmCard : PersonCard;
 
-    return data.map((item: Film, index) => {
+    return data.map((item: Film | Person, index) => {
       return <CardComponent key={item.id} item={item} />;
     })
   }
@@ -37,7 +35,7 @@ class FilmList extends React.Component<FilmListProps, any> {
   }
 }
 
-export default sortFilm(FilmList);
+export default FilmList;
 
 
 

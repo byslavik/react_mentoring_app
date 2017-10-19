@@ -6,7 +6,7 @@ export interface Film {
   video: boolean,
   vote_average: number,
   title: string,
-  popularity: string,
+  popularity: number,
   poster_path: string,
   original_language: string,
   original_title: string,
@@ -16,7 +16,8 @@ export interface Film {
   name: string,
   profile_path: string,
   overview: string,
-  release_date: string
+  release_date: string,
+  [key: number]: number
 }
 
 

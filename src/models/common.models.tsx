@@ -1,9 +1,8 @@
+export type sortFields = 'vote_count' | 'popularity';
+export type searchMethod = 'person' | 'movie'
+
 export interface urlParams {
   type: 'search' | 'movie' | 'person';
-  method?: 'person' | 'movie';
+  method?: searchMethod;
   query: string;
-}
-
-export interface sortFields { 
-  fields: 'vote_count' | 'popularity'
 }

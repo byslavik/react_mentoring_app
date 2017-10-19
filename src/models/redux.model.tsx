@@ -1,11 +1,14 @@
 import {Person, FullPerson} from './person.model';
 import {Film, FullFilm} from './film.model';
-import {urlParams, sortFields} from './common.models'
+import { sortFields, searchMethod} from './common.models'
 
 export interface ReduxStore { 
-  films: Film[] | Person[],
-  searchMethod: urlParams['method'],
-  sort: sortFields['fields'],
-  currentFilm:  FullFilm | FullPerson
+  films: ReduxFilm,
+  searchMethod: searchMethod
+}
 
+export interface ReduxFilm {
+  allFilms:  Film[] | Person[],
+  sort: sortFields,
+  currentFilm:  FullFilm | FullPerson
 }

@@ -16,7 +16,7 @@ interface PersonCardProps {
 export  class PersonCard extends React.Component<PersonCardProps, any> {
   render () {
     const item:Person = this.props.item;
-    const popularity:any = item.popularity;
+    const popularity:number = item.popularity;
     return (
       <article className={s.filmCard}>
         <div className={s.imageWrap}>
