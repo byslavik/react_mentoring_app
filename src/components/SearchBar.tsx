@@ -22,7 +22,7 @@ interface SearchBarProps {
   changeSearchMethod: any;
 }
 
-class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   constructor(props:SearchBarProps) {
     super(props);
 

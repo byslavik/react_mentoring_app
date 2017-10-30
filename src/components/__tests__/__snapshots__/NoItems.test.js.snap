@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoItems component NoItems component shows correctly 1`] = `
+<div
+  className={undefined}
+>
+  No Items Found
+</div>
+`;

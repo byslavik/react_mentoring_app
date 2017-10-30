@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component Header component shows correctly 1`] = `
+<div
+  className={undefined}
+>
+  <header
+    className={undefined}
+  >
+    ChildrenComponent
+  </header>
+</div>
+`;

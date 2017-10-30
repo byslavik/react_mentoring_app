@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {FilmCard} from '../FilmCard';
+import {PersonCard} from '../PersonCard';
 import * as renderer from 'react-test-renderer';
 import {filmData} from './testData'
 
 jest.mock('react-router-dom',()=> ({Link:'Link'}));
 
-describe('FilmCard component', ()=>{
-  it('FilmCard component shows correctly', () => {
+describe('PersonCard component', ()=>{
+  it('PersonCard component shows correctly', () => {
     const tree = renderer.create(
-      <FilmCard item={filmData}/>
+      <PersonCard item={filmData}/>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

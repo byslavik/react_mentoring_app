@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusBar component StatusBar component shows correctly 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <div
+      className={undefined}
+    >
+      ChildrenComponent
+    </div>
+    <div
+      className={undefined}
+    />
+  </div>
+</div>
+`;

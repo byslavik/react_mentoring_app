@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmsBy component FilmsBy component shows correctly 1`] = `
+<span>
+  Films by 
+  person
+</span>
+`;

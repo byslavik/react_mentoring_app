@@ -21,7 +21,7 @@ interface PersonProps {
 
 
 
-class PersonDescription extends React.PureComponent <PersonProps, any> {
+export class PersonDescription extends React.PureComponent <PersonProps, any> {
     componentWillMount() {
       this.getItems(this.props.match.params.id)
     }

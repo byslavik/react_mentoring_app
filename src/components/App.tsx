@@ -10,7 +10,7 @@ import SearchBar from './SearchBar';
 import {StatusBar} from './StatusBar';
 import {FilmCounter} from './FilmCounter';
 import FilmFilter from './FilmFilter';
-import FilmList from './FilmList';
+import {FilmList} from './FilmList';
 
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model'
@@ -35,7 +35,7 @@ class App extends React.Component<AppProps, any> {
                     status={<FilmCounter count = {this.props.films.length} />}
                     options={<FilmFilter />}
                 />
-                <FilmList films={this.props.films} sort={this.props.sort} method={this.props.searchMethod}/>
+                <FilmList films={this.props.films} method={this.props.searchMethod}/>
             </div>
         )
     }

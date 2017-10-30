@@ -19,9 +19,6 @@ interface FilmProps {
   match?:any
 }
 
-
-
-
 export class FilmDescription extends React.PureComponent <FilmProps, any> {
     componentWillMount() {
       this.getItems(this.props.match.params.id)

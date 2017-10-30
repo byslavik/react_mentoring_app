@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "build": "rimraf built && webpack --config config/webpack.prod.js --progress",
-    "server": "npm run build && node server.js"
+    "server": "npm run build && node server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

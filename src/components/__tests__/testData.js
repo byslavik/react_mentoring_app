@@ -13,3 +13,10 @@ export const filmData = {
   profile_path: '/somepath.jpg',
   overview: 'Some description'
 }
+export const filmList = [filmData];
+export const match = {
+  params: {
+    id: 123, 
+    name: 'name'
+  }
+}

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmDescription component FilmDescription component shows correctly 1`] = `
+<article
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <img
+      alt="Original Title"
+      src="https://image.tmdb.org/t/p/w500//somepath.jpg"
+    />
+  </div>
+  <div
+    className={undefined}
+  >
+    <h1>
+      Title
+       
+      <span>
+        100500
+      </span>
+    </h1>
+    <ul
+      className={undefined}
+    >
+      <li />
+    </ul>
+    <p
+      className={undefined}
+    >
+      Some description
+    </p>
+  </div>
+</article>
+`;

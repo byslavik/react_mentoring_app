@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component SearchBar component shows correctly with "movie" method 1`] = `
+<div
+  className={undefined}
+>
+  <h2>
+    Find your movie
+  </h2>
+  <input
+    className={undefined}
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className={undefined}
+  >
+    Search By:
+    <ul>
+      <li>
+        <Button
+          action={[Function]}
+          isActive={true}
+        >
+          Movie
+        </Button>
+      </li>
+      <li>
+        <Button
+          action={[Function]}
+          isActive={false}
+        >
+          Person
+        </Button>
+      </li>
+    </ul>
+  </div>
+  <Button
+    action={[Function]}
+    style={undefined}
+  >
+    Search
+  </Button>
+</div>
+`;
+
+exports[`SearchBar component SearchBar component shows correctly with "person" method 1`] = `
+<div
+  className={undefined}
+>
+  <h2>
+    Find your movie
+  </h2>
+  <input
+    className={undefined}
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className={undefined}
+  >
+    Search By:
+    <ul>
+      <li>
+        <Button
+          action={[Function]}
+          isActive={true}
+        >
+          Movie
+        </Button>
+      </li>
+      <li>
+        <Button
+          action={[Function]}
+          isActive={false}
+        >
+          Person
+        </Button>
+      </li>
+    </ul>
+  </div>
+  <Button
+    action={[Function]}
+    style={undefined}
+  >
+    Search
+  </Button>
+</div>
+`;

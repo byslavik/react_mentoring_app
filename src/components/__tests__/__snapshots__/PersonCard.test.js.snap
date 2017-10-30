@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonCard component PersonCard component shows correctly 1`] = `
+<article
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <img
+      alt="Name"
+      src="https://image.tmdb.org/t/p/w500//somepath.jpg"
+    />
+  </div>
+  <h1>
+    <Link
+      to="/person/Name/1"
+    >
+      Name
+    </Link>
+     
+    <span>
+      100500
+    </span>
+  </h1>
+</article>
+`;

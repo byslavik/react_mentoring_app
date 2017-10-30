@@ -12,7 +12,7 @@ interface FilterProps {
   sortFilms: any
 }
 
-class FilmFilter extends React.Component<FilterProps, any> {
+export class FilmFilter extends React.Component<FilterProps, any> {
   
   sortFilms = (byfield:sortFields)=> {
     this.props.sortFilms(byfield);

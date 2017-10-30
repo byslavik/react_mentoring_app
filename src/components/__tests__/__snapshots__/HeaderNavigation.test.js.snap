@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderNavigation component HeaderNavigation component shows correctly 1`] = `
+<nav>
+  <li>
+    <Link
+      className={undefined}
+      to="/search/"
+    >
+      Search
+    </Link>
+  </li>
+</nav>
+`;

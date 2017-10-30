@@ -7,20 +7,19 @@ import * as s from './scss/FilmList.scss';
 
 import {Film} from '../models/film.model';
 import {Person} from '../models/person.model';
-import {searchMethod, sortFields} from '../models/common.models';
+import {searchMethod} from '../models/common.models';
 
 interface FilmListProps {
   films: Film[] | Person[];
-  sort: sortFields;
   method: searchMethod;
 }
 
 
-class FilmList extends React.Component<FilmListProps, any> {
+export class FilmList extends React.Component<FilmListProps, any> {
 
   buildCards(data: Film[] | Person[])  {
     const CardComponent = this.props.method == 'movie' ? FilmCard : PersonCard;
-
+    
     return data.map((item: Film | Person, index) => {
       return <CardComponent key={item.id} item={item} />;
     })
@@ -28,14 +27,12 @@ class FilmList extends React.Component<FilmListProps, any> {
 
   render() {
     const cards:JSX.Element[] = this.buildCards(this.props.films);
-    
     return <div className={s.filmList}>
       {cards.length != 0 ? cards : <NoItems/> }
     </div> 
   }
 }
 
-export default FilmList;
 
 
 

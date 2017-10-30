@@ -1,14 +1,13 @@
 import * as React from 'react';
-import {FilmCard} from '../FilmCard';
+import {HeaderNavigation} from '../HeaderNavigation';
 import * as renderer from 'react-test-renderer';
-import {filmData} from './testData'
 
 jest.mock('react-router-dom',()=> ({Link:'Link'}));
 
-describe('FilmCard component', ()=>{
-  it('FilmCard component shows correctly', () => {
+describe('HeaderNavigation component', ()=>{
+  it('HeaderNavigation component shows correctly', () => {
     const tree = renderer.create(
-      <FilmCard item={filmData}/>
+      <HeaderNavigation />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

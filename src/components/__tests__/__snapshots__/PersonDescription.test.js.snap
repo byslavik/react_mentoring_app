@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonDescription component PersonDescription component shows correctly 1`] = `
+<article
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <img
+      alt="Name"
+      src="https://image.tmdb.org/t/p/w500//somepath.jpg"
+    />
+  </div>
+  <div
+    className={undefined}
+  >
+    <h1>
+      Name
+       
+      <span>
+        100500
+      </span>
+    </h1>
+    <p
+      className={undefined}
+    />
+  </div>
+</article>
+`;

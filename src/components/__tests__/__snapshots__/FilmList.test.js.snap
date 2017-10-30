@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmList component FilmList component shows correctly with FilmData 1`] = `
+<div
+  className={undefined}
+>
+  <FilmCard
+    item={
+      Object {
+        "adult": false,
+        "backdrop_path": "/somepath.jpg",
+        "id": 1,
+        "name": "Name",
+        "original_title": "Original Title",
+        "overview": "Some description",
+        "popularity": 100500,
+        "poster_path": "/somepath.jpg",
+        "profile_path": "/somepath.jpg",
+        "title": "Title",
+        "video": false,
+        "vote_average": 5,
+        "vote_count": 1000,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FilmList component FilmList component shows correctly with PersonData 1`] = `
+<div
+  className={undefined}
+>
+  <PersonCard
+    item={
+      Object {
+        "adult": false,
+        "backdrop_path": "/somepath.jpg",
+        "id": 1,
+        "name": "Name",
+        "original_title": "Original Title",
+        "overview": "Some description",
+        "popularity": 100500,
+        "poster_path": "/somepath.jpg",
+        "profile_path": "/somepath.jpg",
+        "title": "Title",
+        "video": false,
+        "vote_average": 5,
+        "vote_count": 1000,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FilmList component FilmList component shows correctly without data 1`] = `
+<div
+  className={undefined}
+>
+  <NoItems />
+</div>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component Footer component shows correctly 1`] = `
+<div
+  className={undefined}
+>
+  <footer
+    className={undefined}
+  />
+</div>
+`;

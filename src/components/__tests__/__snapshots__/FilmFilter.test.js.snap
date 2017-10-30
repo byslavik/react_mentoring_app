@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmFilter component FilmFilter component shows correctly with "popularity" option 1`] = `
+<ul>
+  <li
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Sort By: 
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+    >
+      by Votes Count
+    </button>
+  </li>
+  <li>
+    <button
+      className={undefined}
+      onClick={[Function]}
+    >
+      by Popularity
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`FilmFilter component FilmFilter component shows correctly with "vote_count" option 1`] = `
+<ul>
+  <li
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Sort By: 
+  </li>
+  <li>
+    <button
+      className={undefined}
+      onClick={[Function]}
+    >
+      by Votes Count
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+    >
+      by Popularity
+    </button>
+  </li>
+</ul>
+`;
