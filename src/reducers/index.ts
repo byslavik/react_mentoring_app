@@ -5,7 +5,6 @@ import {films} from './films';
 import {searchMethod} from './searchMethod';
 
 export default combineReducers({
-  routerReducer,
   films,
   searchMethod
 });

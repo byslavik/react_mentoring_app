@@ -3,7 +3,6 @@ import {urlParams} from './models/common.models';
 
 
 export function urlGenerator(params:urlParams) {
-  console.log(params);
   if(params.type == 'movie' || params.type == 'person') {
     return SETTINGS.apiUrl + params.type + '/' + params.query + '?api_key=' + SETTINGS.apiKey ; 
   }

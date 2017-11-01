@@ -61,7 +61,7 @@ module.exports = {
 
     context: helpers.root('src'),
 
-    entry: './index',
+    entry: ['babel-polyfill', './main'],
 
     output: {
         path: helpers.root( "built"),
@@ -72,13 +72,17 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
 
-
     module: {
         rules: [{
                 test: /\.tsx?$/,
                 loaders: [
                     "awesome-typescript-loader"
                 ],
+
+            },
+            {
+              test: /\.js?$/,
+              exclude: /__tests__/
 
             },
             {
@@ -111,7 +115,6 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin({ filename: '[name].css' }),
         new HtmlWebpackPlugin({
-            hash: true,
             template: './index.html'
         })
     ]

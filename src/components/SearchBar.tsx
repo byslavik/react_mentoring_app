@@ -100,7 +100,7 @@ export default connect<any,any,any>(
   }),
   (dispatch:any) => ({
     getFilmsByQuery: (urlParams:urlParams)=> {
-      dispatch(getFilmsByQuery(urlParams, 'FETCH_FILMS'));
+      dispatch({type: 'FETCH_FILMS', payload: {dispatchType: 'FETCH_FILMS', urlParams: urlParams}});
     },
     changeSearchMethod: (method: searchMethod)=>{
       dispatch(changeMethod(method));

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "build": "rimraf built && webpack --config config/webpack.prod.js --progress",
-    "server": "npm run build && node server.js",
+    "server": "npm run build && node server.js NODE_ENV=production",
     "test": "jest"
   },
   "repository": {
@@ -38,8 +38,6 @@
   },
   "homepage": "https://github.com/byslavik/react_mentoring_app#readme",
   "devDependencies": {
-    "@types/react": "^16.0.5",
-    "@types/react-dom": "^15.5.4",
     "@types/react-hot-loader": "^3.0.4",
     "@types/webpack-env": "^1.13.0",
     "awesome-typescript-loader": "3.2.3",
@@ -68,9 +66,14 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@types/react-redux": "^5.0.9",
-    "@types/react-router-dom": "^4.0.7",
-    "@types/react-router-redux": "^5.0.8",
+    "@types/history": "^4.5.0",
+    "@types/react": "^16.0.19",
+    "@types/react-dom": "^16.0.2",
+    "@types/react-redux": "^5.0.12",
+    "@types/react-router-dom": "^4.2.0",
+    "@types/react-router-redux": "^4.0.51",
+    "axios": "^0.17.0",
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
     "express": "^4.15.4",
@@ -79,10 +82,13 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.6",
+    "react-router-redux": "^5.0.0-alpha.8",
     "react-test-renderer": "^16.0.0",
     "redux": "^3.7.2",
+    "redux-connect": "^6.0.0",
     "redux-form": "^7.0.4",
-    "redux-thunk": "^2.2.0"
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.2.0",
+    "typescript": "^2.5.0"
   }
 }

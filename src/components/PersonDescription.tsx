@@ -60,7 +60,7 @@ export default connect<any, any, any>(
   }),
   (dispatch: any) => ({
     getFilmsByQuery: (query:urlParams)=> {
-      dispatch(getFilmsByQuery(query, 'GET_FILM'));
+      dispatch({type: 'GET_FILM', payload: {dispatchType: 'GET_FILM', urlParams: query}});
     }
    })
 )(PersonDescription);

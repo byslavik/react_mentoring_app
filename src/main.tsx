@@ -2,12 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 const { ConnectedRouter, routerMiddleware, push } = require('react-router-redux');
-import thunk from 'redux-thunk';
-import {createBrowserHistory} from 'history';
-
 
 import {NoItems} from './components/NoItems';
 
@@ -18,24 +13,22 @@ import FilmDescription from './components/FilmDescription';
 import PersonDescription from './components/PersonDescription';
 
 import App from './components/App';
+import filmSaga from './sagas';
+import reducer from './reducers';
+import store, { history } from './store';
+
 import './scss/core.scss';
 
-const history = createBrowserHistory();
-const middleware = routerMiddleware(history);
 
 history.listen(() => {
   window.scrollTo(0, 0);
 })
 
-import reducer from './reducers';
-
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk), applyMiddleware(middleware)));
-
 
 const render = () => {
     ReactDom.render(
       <Provider store={store}>
-          <ConnectedRouter history={history}>
+          <Router history={history}>
             <Switch>
               <App>
                   <Route exact path="/" component={SearchBar}/>
@@ -44,7 +37,7 @@ const render = () => {
                   <Route path="/person/:name/:id" component={PersonDescription}/>
               </App>
             </Switch>
-          </ConnectedRouter>
+          </Router>
       </Provider>,
         document.getElementById('app')
     )
