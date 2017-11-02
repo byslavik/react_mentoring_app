@@ -29,7 +29,7 @@ export function films (state:ReduxFilm = defaultState, action:action):ReduxFilm 
   switch (action.type) {
     case 'SORT_FILMS':
       
-      defaultState.sort = action.payload;
+      defaultState.sort = action.payload.params;
       defaultState.allFilms = defaultState.allFilms.sort(sortFilms.bind(defaultState));
 
       return {...defaultState};

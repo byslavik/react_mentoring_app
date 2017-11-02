@@ -4,7 +4,7 @@ import * as s from './scss/SearchBar.scss';
 import {Button} from './Button';
 import { connect } from 'react-redux';
 
-import {getFilmsByQuery} from '../actions/films';
+import {changeMethod, getAllFilms} from '../actions'
 
 import {searchMethod, urlParams} from './../models/common.models'; 
 import {ReduxStore} from './../models/redux.model'; 
@@ -39,7 +39,7 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   changeMethod = (method: searchMethod) => {
    this.setState({method: method})
   }
-  componentDidMount() {
+  componentWillMount() {
     if(!this.state.searchWord){
       return;
     }
@@ -88,22 +88,17 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
       </div>);
   }
 }
-function changeMethod(field:searchMethod) {
-  return {
-    type: "CHANGE_METHOD",
-    payload: field
-  }
-}
+
 export default connect<any,any,any>(
   (state:ReduxStore) => ({
     method: state.searchMethod
   }),
   (dispatch:any) => ({
     getFilmsByQuery: (urlParams:urlParams)=> {
-      dispatch({type: 'FETCH_FILMS', payload: {dispatchType: 'FETCH_FILMS', urlParams: urlParams}});
+      dispatch(getAllFilms({dispatchType: 'FETCH_FILMS', urlParams: urlParams}));
     },
     changeSearchMethod: (method: searchMethod)=>{
-      dispatch(changeMethod(method));
+      dispatch(changeMethod({params: method}));
     }
    })
 )(SearchBar);

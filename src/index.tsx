@@ -1,41 +1,35 @@
 import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Router, Route, Switch } from 'react-router-dom';
+import {hydrate} from 'react-dom';
+import { BrowserRouter , Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-const { ConnectedRouter, routerMiddleware, push } = require('react-router-redux');
-import thunk from 'redux-thunk';
-import {createBrowserHistory} from 'history';
-
+import { routerMiddleware, push } from 'react-router-redux';
 
 import {NoItems} from './components/NoItems';
-
-
 import SearchBar from './components/SearchBar';
 import {HeaderTitle} from './components/HeaderTitle';
 import FilmDescription from './components/FilmDescription';
 import PersonDescription from './components/PersonDescription';
 
 import App from './components/App';
+
+import 'babel-polyfill';
 import './scss/core.scss';
 
-const history = createBrowserHistory();
-const middleware = routerMiddleware(history);
+import configureStore from './configureStore';
 
-history.listen(() => {
-  window.scrollTo(0, 0);
-})
+interface MyWindow extends Window {
+  __PRELOADED_STATE__: any;
+}
 
-import reducer from './reducers';
+declare var window: MyWindow;
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk), applyMiddleware(middleware)));
-
+const store = configureStore(window.__PRELOADED_STATE__);
+delete window.__PRELOADED_STATE__;
 
 const render = () => {
-    ReactDom.render(
+    hydrate(
       <Provider store={store}>
-          <ConnectedRouter history={history}>
+          <BrowserRouter>
             <Switch>
               <App>
                   <Route exact path="/" component={SearchBar}/>
@@ -44,9 +38,9 @@ const render = () => {
                   <Route path="/person/:name/:id" component={PersonDescription}/>
               </App>
             </Switch>
-          </ConnectedRouter>
+          </BrowserRouter>
       </Provider>,
-        document.getElementById('app')
+        document.getElementById('root')
     )
 }
 

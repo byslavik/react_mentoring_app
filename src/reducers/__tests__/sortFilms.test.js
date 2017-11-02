@@ -2,10 +2,10 @@ import reducer, {sortFilms} from '../index'
 // import * as types from '../../constants/ActionTypes';
 import {film, defaultState} from './testData';
 describe('sort reducer', () => {
-  it('should sort results by popularity by default ', () => {
+  it('sort field should be "by popularity" by default ', () => {
     let reducerResult = reducer(defaultState, {
       type: 'ANY_TYPE',
-      payload: ''
+      payload: {params: ''}
     });
 
     expect(
@@ -17,7 +17,7 @@ describe('sort reducer', () => {
     let sortField = 'popularity';
     let reducerResult = reducer(defaultState, {
       type: 'SORT_FILMS',
-      payload: sortField
+      payload: {params: sortField}
     });
 
     let sorted = defaultState.films.allFilms.sort(sortFilms);
@@ -31,7 +31,7 @@ describe('sort reducer', () => {
     let sortField = 'votes_count';
     let reducerResult = reducer(defaultState, {
       type: 'SORT_FILMS',
-      payload: sortField
+      payload: {params: sortField}
     });
 
     let sorted = defaultState.films.allFilms.sort(sortFilms);

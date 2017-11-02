@@ -61,7 +61,7 @@ module.exports = {
 
     context: helpers.root('src'),
 
-    entry: ['babel-polyfill', './main'],
+    entry: './index',
 
     output: {
         path: helpers.root( "built"),
@@ -114,8 +114,8 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin({ filename: '[name].css' }),
-        new HtmlWebpackPlugin({
-            template: './index.html'
-        })
+        new HtmlWebpackPlugin(            
+          {template: './index.html'}
+        )
     ]
 };

@@ -75,8 +75,5 @@ export const defaultState = {
     currentFilm: {},
     sort: 'popularity'
   },
-  searchMethod: 'movie',
-  routerReducer: {
-    location: null
-  }
+  searchMethod: 'movie'
 }

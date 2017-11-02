@@ -6,7 +6,7 @@ describe('searchMethod reducer', () => {
   it('should return movie by default ', () => {
     let reducerResult = reducer(defaultState, {
       type: 'ANY_TYPE',
-      payload: ''
+      payload: {params: ''}
     });
 
     expect(
@@ -17,7 +17,9 @@ describe('searchMethod reducer', () => {
   it('should change search method on  ', () => {
     let reducerResult = reducer(defaultState, {
       type: 'CHANGE_METHOD',
-      payload: 'person'
+      payload: {
+        params: 'person'
+      }
     });
 
     expect(

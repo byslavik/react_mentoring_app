@@ -9,10 +9,6 @@ module.exports = webpackMerge(commonConfig, {
 
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin({ filename: '[name].css' }),
-    new HtmlWebpackPlugin({
-        hash: true,
-        template: './index.html'
-    })
+    new ExtractTextPlugin({ filename: '[name].css' })
   ]
 });

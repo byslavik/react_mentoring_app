@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-
+import {sortFilms} from '../actions';
 import { sortFields } from '../models/common.models';
 import {ReduxStore} from './../models/redux.model'; 
 
@@ -26,17 +26,11 @@ export class FilmFilter extends React.Component<FilterProps, any> {
       </ul> )
     }
 }
-function sortFilm(byfield:sortFields) {
-  return {
-    type: "SORT_FILMS",
-    payload: byfield
-  }
-}
 export default connect(
   (state: ReduxStore) => ({
     sort: state.films.sort
   }),
   (dispatch: any) => ({
-    sortFilms: (byfield:sortFields)=> dispatch(sortFilm(byfield))
+    sortFilms: (byfield:sortFields)=> dispatch(sortFilms({params: byfield}))
    })
 )(FilmFilter);

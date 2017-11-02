@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 
-import {getFilmsByQuery} from '../actions/films';
+import {getFilm} from '../actions'
 
 import {urlParams} from './../models/common.models'; 
 
@@ -60,7 +60,7 @@ export default connect<any, any, any>(
   }),
   (dispatch: any) => ({
     getFilmsByQuery: (query:urlParams)=> {
-      dispatch({type: 'GET_FILM', payload: {dispatchType: 'GET_FILM', urlParams: query}});
+      dispatch(getFilm({dispatchType: 'GET_FILM', urlParams: query}));
     }
    })
 )(PersonDescription);

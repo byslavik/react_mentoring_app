@@ -4,7 +4,8 @@ import { sortFields, searchMethod} from './common.models'
 
 export interface ReduxStore { 
   films: ReduxFilm,
-  searchMethod: searchMethod
+  searchMethod: searchMethod,
+  runSaga?: any
 }
 
 export interface ReduxFilm {

@@ -26,7 +26,6 @@ interface AppProps {
 class App extends React.Component<AppProps, any> {
 
     render() {
-      console.log(this.props.children);
         return (
             <div>
                 <Header>
