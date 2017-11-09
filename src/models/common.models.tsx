@@ -6,3 +6,7 @@ export interface urlParams {
   method?: searchMethod;
   query: string;
 }
+export interface action {
+  type: string;
+  payload: any;
+}
